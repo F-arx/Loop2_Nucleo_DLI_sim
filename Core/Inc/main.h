@@ -31,6 +31,8 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "FreeRTOS.h"
+#include "task.h"
 
 /* USER CODE END Includes */
 
@@ -59,26 +61,46 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define BTN_CHANGE_POINT_STATUS_Pin GPIO_PIN_0
 #define BTN_CHANGE_POINT_STATUS_GPIO_Port GPIOC
+#define BTN_CHANGE_POINT_STATUS_EXTI_IRQn EXTI0_IRQn
 #define BTN_POINT_NEXT_Pin GPIO_PIN_1
 #define BTN_POINT_NEXT_GPIO_Port GPIOC
+#define BTN_POINT_NEXT_EXTI_IRQn EXTI1_IRQn
 #define BTN_POINT_PREV_Pin GPIO_PIN_2
 #define BTN_POINT_PREV_GPIO_Port GPIOC
+#define BTN_POINT_PREV_EXTI_IRQn EXTI2_IRQn
 #define BTN_RESET_ALL_STATUS_Pin GPIO_PIN_3
 #define BTN_RESET_ALL_STATUS_GPIO_Port GPIOC
+#define BTN_RESET_ALL_STATUS_EXTI_IRQn EXTI3_IRQn
 #define BTN_SPE_SELECT_Pin GPIO_PIN_4
 #define BTN_SPE_SELECT_GPIO_Port GPIOC
+#define BTN_SPE_SELECT_EXTI_IRQn EXTI4_IRQn
 #define BTN_SPE_VALIDATE_Pin GPIO_PIN_5
 #define BTN_SPE_VALIDATE_GPIO_Port GPIOC
+#define BTN_SPE_VALIDATE_EXTI_IRQn EXTI9_5_IRQn
 #define LED_FAULT_STATE_Pin GPIO_PIN_6
 #define LED_FAULT_STATE_GPIO_Port GPIOC
-#define LED_SELECT_POINT_Pin GPIO_PIN_7
+#define LED_INIT_Pin GPIO_PIN_7
+#define LED_INIT_GPIO_Port GPIOC
+#define LED_SELECT_POINT_Pin GPIO_PIN_8
 #define LED_SELECT_POINT_GPIO_Port GPIOC
+#define LED_LOOP_Pin GPIO_PIN_9
+#define LED_LOOP_GPIO_Port GPIOC
 #define LED_STANDBY_STATE_Pin GPIO_PIN_8
-#define LED_STANDBY_STATE_GPIO_Port GPIOC
-#define LED_TX_COMPLETE_Pin GPIO_PIN_9
-#define LED_TX_COMPLETE_GPIO_Port GPIOC
+#define LED_STANDBY_STATE_GPIO_Port GPIOA
+#define LED_CHANGE_POINT_STATUS_Pin GPIO_PIN_9
+#define LED_CHANGE_POINT_STATUS_GPIO_Port GPIOA
+#define LED_TX_COMPLETE_Pin GPIO_PIN_10
+#define LED_TX_COMPLETE_GPIO_Port GPIOA
+#define LED_SPE_SELECT_Pin GPIO_PIN_11
+#define LED_SPE_SELECT_GPIO_Port GPIOC
+#define LED_SPE_VALIDATE_Pin GPIO_PIN_12
+#define LED_SPE_VALIDATE_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
+
+extern TaskHandle_t xI2C_TaskHandle;
+
+
 
 /* USER CODE END Private defines */
 
